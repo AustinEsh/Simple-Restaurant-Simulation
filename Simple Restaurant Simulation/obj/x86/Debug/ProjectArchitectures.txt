@@ -1,0 +1,1 @@
+C:\Users\austi\source\repos\Simple Restaurant Simulation\Simple Restaurant Simulation\Simple Restaurant Simulation.csproj;x86
