@@ -29,6 +29,7 @@ namespace Simple_Restaurant_Simulation
             this.InitializeComponent();
         }
         static object order;
+        Employee employee = new Employee();
 
         private void SubmitNewRequest_Click(object sender, RoutedEventArgs e)
         {
@@ -38,8 +39,8 @@ namespace Simple_Restaurant_Simulation
             try
             {
                 bool? isChicken = chickenOpt.IsChecked;
-                order = Employee.NewRequest(isChicken, int.Parse(OrderQuantity.Text));
-                EggQuality.Text = Employee.Inspect(order);
+                order = employee.NewRequest(isChicken, int.Parse(OrderQuantity.Text));
+                EggQuality.Text = employee.Inspect(order);
             }
             catch (Exception)
             {
@@ -51,8 +52,8 @@ namespace Simple_Restaurant_Simulation
         {
             try
             {
-                order = Employee.CopyRequest();
-                EggQuality.Text = Employee.Inspect(order);
+                order = employee.CopyRequest();
+                EggQuality.Text = employee.Inspect(order);
             }
             catch (NullReferenceException)
             {
@@ -64,7 +65,7 @@ namespace Simple_Restaurant_Simulation
         {
             try
             {
-                Results.Text = Employee.PrepareFood(order);
+                Results.Text = employee.PrepareFood(order);
                 order = null;
                 OrderQuantity.Text = "";
             }

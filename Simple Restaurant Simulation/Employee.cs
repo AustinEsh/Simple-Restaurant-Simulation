@@ -3,15 +3,15 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace Simple_Restaurant_Simulation
 {
-    public static class Employee
+    public class Employee
     {
-        static object _order;
-        static int count;
+        object _order;
+        int _count = 0;
 
-        public static object NewRequest(bool? isChicken, int quantity)
+        public object NewRequest(bool? isChicken, int quantity)
         {
-            count++;
-            if (count % 3 == 0)
+            _count++;
+            if (_count % 3 == 0)
                 isChicken = !isChicken;
 
             if (isChicken == true)
@@ -25,11 +25,11 @@ namespace Simple_Restaurant_Simulation
                 return _order;
             }
         }
-        public static object CopyRequest()
+        public object CopyRequest()
         {
-            if (_order is ChickenOrder)
+            if (_order is ChickenOrder chickenOrder)
             {
-                return new ChickenOrder(((ChickenOrder)_order)._quantity);
+                return chickenOrder._quantity;
             }
             else
             {
@@ -39,7 +39,7 @@ namespace Simple_Restaurant_Simulation
                 return newOrder;
             }
         }
-        public static string PrepareFood(object order)
+        public string PrepareFood(object order)
         {
             try
             {
@@ -78,7 +78,7 @@ namespace Simple_Restaurant_Simulation
             }
 
         }
-        public static string Inspect(object order)
+        public string Inspect(object order)
         {
             if (order is ChickenOrder)
             {

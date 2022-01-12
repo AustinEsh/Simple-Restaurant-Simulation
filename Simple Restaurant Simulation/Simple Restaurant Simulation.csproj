@@ -125,9 +125,7 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PrepareFood.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="User Interface Dialog.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
