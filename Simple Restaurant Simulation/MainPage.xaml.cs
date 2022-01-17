@@ -52,12 +52,34 @@ namespace Simple_Restaurant_Simulation
 
         private void SendRequests_Click(object sender, RoutedEventArgs e)
         {
-            EggQuality.Text = server.SendOrder();
+            try
+            {
+                EggQuality.Text = server.SendOrder();
+            }
+            catch (InvalidOperationException error)
+            {
+                Results.Text = error.Message;
+            }
+            catch (Exception)
+            {
+                Results.Text = "Sorry, something went wrong.";
+            }
         }
 
         private void ServeFood_Click(object sender, RoutedEventArgs e)
         {
-            Results.Text = server.ServeFood();
+            try
+            {
+                Results.Text = server.ServeFood();
+            }
+            catch (InvalidOperationException error)
+            {
+                Results.Text = error.Message;
+            }
+            catch (Exception)
+            {
+                Results.Text = "Sorry, something went wrong.";
+            }
         }
     }
 }

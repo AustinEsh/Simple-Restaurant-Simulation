@@ -36,39 +36,32 @@ namespace Simple_Restaurant_Simulation
         }
         public string PrepareFood(object order)
         {
-            try
+            if (order is ChickenOrder)
             {
-                if (order is ChickenOrder)
+                ChickenOrder chickenOrder = (ChickenOrder)order;
+                int quantity = chickenOrder.GetQuantity();
+                for (int i = 0; i < quantity; i++)
                 {
-                    ChickenOrder chickenOrder = (ChickenOrder)order;
-                    int quantity = chickenOrder.GetQuantity();
-                    for (int i = 0; i < quantity; i++)
-                    {
-                        chickenOrder.CutUp();
-                    }
-
-                    chickenOrder.Cook();
-
-                    return quantity.ToString() + " chickens";
+                    chickenOrder.CutUp();
                 }
-                else
-                {
-                    EggOrder eggOrder = (EggOrder)order;
-                    int quantity = eggOrder.GetQuantity();
-                    for (int i = 0; i < quantity; i++)
-                    {
-                        eggOrder.Crack();
-                        eggOrder.DiscardShell();
-                    }
 
-                    eggOrder.Cook();
+                chickenOrder.Cook();
 
-                    return quantity.ToString() + " eggs";
-                }
+                return quantity.ToString() + " chickens";
             }
-            catch (System.NullReferenceException)
+            else
             {
-                throw new System.NullReferenceException();
+                EggOrder eggOrder = (EggOrder)order;
+                int quantity = eggOrder.GetQuantity();
+                for (int i = 0; i < quantity; i++)
+                {
+                    eggOrder.Crack();
+                    eggOrder.DiscardShell();
+                }
+
+                eggOrder.Cook();
+
+                return quantity.ToString() + " eggs";
             }
         }
         public string Inspect(object eggOrder)

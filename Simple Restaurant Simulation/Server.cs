@@ -43,50 +43,87 @@ namespace Simple_Restaurant_Simulation
         }
         public string SendOrder()
         {
-            object[,] preparedOrders = new object[_orderCount, 3];
-            string eggQuality = "";
-
-            for (int order = 0; order < _orderCount; order++)
+            if (_orderCount > 0)
             {
-                int chickenQuantity = 0;
-                int eggQuantity = 0;
-                foreach (MenuItem item in _orders[order])
+                object[,] preparedOrders = new object[_orderCount, 3];
+                string eggQuality = "";
+
+                for (int order = 0; order < _orderCount; order++)
                 {
-                    switch (item.ToString())
+                    int chickenQuantity = 0;
+                    int eggQuantity = 0;
+                    foreach (MenuItem item in _orders[order])
                     {
-                        case "Chicken":
-                            chickenQuantity++;
-                            break;
-                        case "Egg":
-                            eggQuantity++;
-                            break;
+                        switch (item.ToString())
+                        {
+                            case "Chicken":
+                                chickenQuantity++;
+                                break;
+                            case "Egg":
+                                eggQuantity++;
+                                break;
+                        }
                     }
+
+                    preparedOrders[order, 0] = ((ChickenOrder)_cook.NewRequest(true, chickenQuantity));
+                    preparedOrders[order, 1] = ((EggOrder)_cook.NewRequest(false, eggQuantity));
+                    if (eggQuantity > 0)
+                    {
+                        if (order > 0)
+                            eggQuality += ", ";
+                        eggQuality += _cook.Inspect(preparedOrders[order, 1]);
+                    }
+                    preparedOrders[order, 2] = _orders[order][_orders[order].Length - 1];
                 }
 
-                preparedOrders[order, 0] = ((ChickenOrder)_cook.NewRequest(true, chickenQuantity));
-                preparedOrders[order, 1] = ((EggOrder)_cook.NewRequest(false, eggQuantity));
-                if (eggQuantity > 0)
-                {
-                    if (order > 0)
-                        eggQuality += ", ";
-                    eggQuality += _cook.Inspect(preparedOrders[order, 1]);
-                }
-                preparedOrders[order, 2] = _orders[order][_orders[order].Length - 1];
+                _preparedOrders = preparedOrders;
+                return eggQuality;
             }
-
-            _preparedOrders = preparedOrders;
-            return eggQuality;
+            else
+            {
+                throw new InvalidOperationException("There are no orders to send to the cook.");
+            }
         }
         public string ServeFood()
         {
-            string summary = "";
-
-            for (int order = 0; order < _preparedOrders.GetLength(0); order++)
+            try
             {
-                summary += _cook.PrepareFood(_preparedOrders[order, 0]) + ", " + _cook.PrepareFood(_preparedOrders[order, 1]) + " and " + _preparedOrders[order, 2] + $" for Customer {order}\n";
-            }
+                string summary = "";
 
-            return summary;
+                for (int order = 0; order < _preparedOrders.GetLength(0); order++)
+                {
+                    string drink = "no drink";
+                    switch (_preparedOrders[order, 2])
+                    {
+                        case MenuItem.ChocolateMilk:
+                            drink = "Chocolate Milk";
+                            break;
+                        case MenuItem.Coffee:
+                            drink = "Coffee";
+                            break;
+                        case MenuItem.JockoFuel:
+                            drink = "Jocko Fuel";
+                            break;
+                        case MenuItem.Tea:
+                            drink = "Tea";
+                            break;
+                        case MenuItem.Water:
+                            drink = "Water";
+                            break;
+                        default:
+                            drink = "no drink";
+                            break;
+                    }
+
+                    summary += _cook.PrepareFood(_preparedOrders[order, 0]) + ", " + _cook.PrepareFood(_preparedOrders[order, 1]) + " and " + drink + $" for Customer {order}\n";
+                }
+
+                return summary;
+            }
+            catch
+            {
+                throw new InvalidOperationException("There are no prepared orders to serve.");
+            }
         }
     }
 }
