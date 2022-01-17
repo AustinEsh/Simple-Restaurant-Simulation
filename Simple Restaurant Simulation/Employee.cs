@@ -29,7 +29,7 @@ namespace Simple_Restaurant_Simulation
         {
             if (_order is ChickenOrder chickenOrder)
             {
-                return chickenOrder._quantity;
+                return chickenOrder;
             }
             else
             {

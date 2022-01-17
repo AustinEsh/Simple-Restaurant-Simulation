@@ -30,13 +30,13 @@
     <AppXManifest Include="C:\Users\austi\source\repos\Simple Restaurant Simulation\Simple Restaurant Simulation\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-01-12T13:25:17.428</Modified>
+      <Modified>2022-01-17T16:43:11.113</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\austi\source\repos\Simple Restaurant Simulation\Simple Restaurant Simulation\bin\x86\Debug\Simple Restaurant Simulation.exe">
       <PackagePath>entrypoint\Simple Restaurant Simulation.exe</PackagePath>
-      <Modified>2022-01-12T13:25:16.299</Modified>
+      <Modified>2022-01-17T16:43:10.761</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x86.microsoft.netcore.universalwindowsplatform\6.2.10\runtimes\win10-x86\lib\uap10.0.15138\System.Runtime.dll">
       <PackagePath>System.Runtime.dll</PackagePath>
@@ -86,15 +86,15 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\austi\source\repos\Simple Restaurant Simulation\Simple Restaurant Simulation\bin\x86\Debug\Simple Restaurant Simulation.xr.xml">
       <PackagePath>Simple Restaurant Simulation.xr.xml</PackagePath>
-      <Modified>2022-01-10T21:29:22.293</Modified>
+      <Modified>2022-01-17T16:37:49.945</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\austi\source\repos\Simple Restaurant Simulation\Simple Restaurant Simulation\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2022-01-12T13:25:16.148</Modified>
+      <Modified>2022-01-17T16:43:10.611</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\austi\source\repos\Simple Restaurant Simulation\Simple Restaurant Simulation\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2022-01-12T13:25:16.148</Modified>
+      <Modified>2022-01-17T16:43:10.611</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.18362.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -102,11 +102,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\austi\source\repos\Simple Restaurant Simulation\Simple Restaurant Simulation\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2022-01-12T13:25:16.657</Modified>
+      <Modified>2022-01-17T16:38:46.333</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\austi\source\repos\Simple Restaurant Simulation\Simple Restaurant Simulation\bin\x86\Debug\Core\Simple Restaurant Simulation.exe">
       <PackagePath>Simple Restaurant Simulation.exe</PackagePath>
-      <Modified>2022-01-12T13:25:17.418</Modified>
+      <Modified>2022-01-17T16:43:11.110</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
