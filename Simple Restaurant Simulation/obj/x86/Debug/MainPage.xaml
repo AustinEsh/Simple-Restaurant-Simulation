@@ -14,7 +14,7 @@
         <TextBox x:ConnectionId='2' x:Name="ChickenQuantity" Canvas.Left="430" Canvas.Top="90" TextWrapping="Wrap" Height="50" Width="75" FontSize="30"/>
         <TextBox x:ConnectionId='3' x:Name="EggQuantity" Canvas.Left="430" Canvas.Top="150" TextWrapping="Wrap" Height="50" Width="75" FontSize="30"/>
         <ComboBox x:ConnectionId='4' Canvas.Left="625" Canvas.Top="105" Width="200" x:Name="DrinkOption" Header="Drink" Height="110" FontSize="30">
-            <ComboBoxItem x:ConnectionId='10' Content="No Drink" x:Name="NoDrink"/>
+            <ComboBoxItem x:ConnectionId='10' Content="No Drink" x:Name="NoDrink" IsSelected="True"/>
             <ComboBoxItem x:ConnectionId='11' Content="Water" x:Name="Water"/>
             <ComboBoxItem x:ConnectionId='12' Content="Coffee" x:Name="Coffee"/>
             <ComboBoxItem x:ConnectionId='13' Content="Tea" x:Name="Tea"/>

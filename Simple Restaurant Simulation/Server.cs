@@ -19,7 +19,6 @@ namespace Simple_Restaurant_Simulation
             {
                 int _chickenQuantity = 0;
                 int _eggQuantity = 0;
-                MenuItem _drink = MenuItem.NoDrink;
 
                 int.TryParse(chickenQuantity, out _chickenQuantity);
                 int.TryParse(eggQuantity, out _eggQuantity);
@@ -33,8 +32,7 @@ namespace Simple_Restaurant_Simulation
                 {
                     order[i] = MenuItem.Egg;
                 }
-                Enum.TryParse(drink, out _drink);
-                order[_chickenQuantity + _eggQuantity] = _drink;
+                order[_chickenQuantity + _eggQuantity] = (MenuItem)Enum.Parse(typeof(MenuItem), drink);
                 _orders[_orderCount] = order;
                 _orderCount++;
             }
