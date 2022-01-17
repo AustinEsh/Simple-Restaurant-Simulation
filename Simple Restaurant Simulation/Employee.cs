@@ -3,17 +3,12 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace Simple_Restaurant_Simulation
 {
-    public class Employee
+    public class Cook
     {
         object _order;
-        int _count = 0;
 
         public object NewRequest(bool? isChicken, int quantity)
         {
-            _count++;
-            if (_count % 3 == 0)
-                isChicken = !isChicken;
-
             if (isChicken == true)
             {
                 _order = new ChickenOrder(quantity);

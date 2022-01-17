@@ -7,24 +7,15 @@ using Windows.Security.Credentials.UI;
 
 namespace Simple_Restaurant_Simulation
 {
-    public class ChickenOrder
+    public class ChickenOrder : Order
     {
-        public int _quantity;
-       
         public ChickenOrder(int quantity)
+            : base(quantity)
         {
-            _quantity = quantity;
+
         }
 
-        public int GetQuantity()
-        {
-            return _quantity;
-        }
         public void CutUp()
-        {
-
-        }
-        public void Cook()
         {
 
         }

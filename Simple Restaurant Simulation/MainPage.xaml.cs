@@ -22,65 +22,41 @@ namespace Simple_Restaurant_Simulation
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
+    /// 
+
+    public enum MenuItem
+    {
+        Chicken = 0,
+        Egg = 1,
+        Coffee = 2,
+        Tea = 3,
+        Water = 4,
+        ChocolateMilk = 5,
+        JockoFuel = 6
+    }
+
     public sealed partial class MainPage : Page
     {
         public MainPage()
         {
             this.InitializeComponent();
         }
-        static object order;
-        Employee employee = new Employee();
 
-        private void SubmitNewRequest_Click(object sender, RoutedEventArgs e)
+        public Server server = new Server();
+
+        private void ReceiveRequest_Click(object sender, RoutedEventArgs e)
         {
-            EggQuality.Text = "";
-            Results.Text = "";
-
-            try
-            {
-                bool? isChicken = chickenOpt.IsChecked;
-                order = employee.NewRequest(isChicken, int.Parse(OrderQuantity.Text));
-                EggQuality.Text = employee.Inspect(order);
-            }
-            catch (Exception)
-            {
-                Results.Text = "Please enter a number.";
-            }
+            server.TakeOrder(ChickenQuantity.Text, EggQuantity.Text, ((ComboBoxItem)DrinkOption.SelectedValue).Name);
         }
 
-        private void CopyPreviousRequest_Click(object sender, RoutedEventArgs e)
+        private void SendRequests_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                order = employee.CopyRequest();
-                EggQuality.Text = employee.Inspect(order);
-            }
-            catch (NullReferenceException)
-            {
-                Results.Text = "There is no previous request.";
-            }
+            EggQuality.Text = server.SendOrder();
         }
 
-        private void PrepareFood_Click(object sender, RoutedEventArgs e)
+        private void ServeFood_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                Results.Text = employee.PrepareFood(order);
-                order = null;
-                OrderQuantity.Text = "";
-            }
-            catch (InvalidOperationException error)
-            {
-                Results.Text = error.Message;
-            }
-            catch (NullReferenceException error)
-            {
-                Results.Text = error.Message;
-            }
-            catch (Exception)
-            {
-                Results.Text = "Sorry, something went wrong.";
-            }
+            Results.Text = server.ServeFood();
         }
     }
 }
