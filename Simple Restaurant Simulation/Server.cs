@@ -11,14 +11,18 @@ namespace Simple_Restaurant_Simulation
         Cook _cook = new Cook();
         MenuItem[][] _orders = new MenuItem[8][];
         int _orderCount;
-        List<object> _preparedOrders = new List<object> { };
+        object[,] _preparedOrders;
 
         public void TakeOrder(string chickenQuantity, string eggQuantity, string drink)
         {
             if (_orderCount < 8)
             {
-                int.TryParse(chickenQuantity, out int _chickenQuantity);
-                int.TryParse(eggQuantity, out int _eggQuantity);
+                int _chickenQuantity = 0;
+                int _eggQuantity = 0;
+                MenuItem _drink = MenuItem.NoDrink;
+
+                int.TryParse(chickenQuantity, out _chickenQuantity);
+                int.TryParse(eggQuantity, out _eggQuantity);
                 MenuItem[] order = new MenuItem[_chickenQuantity + _eggQuantity + 1];
 
                 for (int i = 0; i < _chickenQuantity; i++)
@@ -29,7 +33,8 @@ namespace Simple_Restaurant_Simulation
                 {
                     order[i] = MenuItem.Egg;
                 }
-                order[_chickenQuantity + _eggQuantity] = (MenuItem)Enum.Parse(typeof(MenuItem), drink);
+                Enum.TryParse(drink, out _drink);
+                order[_chickenQuantity + _eggQuantity] = _drink;
                 _orders[_orderCount] = order;
                 _orderCount++;
             }
@@ -40,6 +45,7 @@ namespace Simple_Restaurant_Simulation
         }
         public string SendOrder()
         {
+            object[,] preparedOrders = new object[_orderCount, 3];
             string eggQuality = "";
 
             for (int order = 0; order < _orderCount; order++)
@@ -59,26 +65,27 @@ namespace Simple_Restaurant_Simulation
                     }
                 }
 
-                if (chickenQuantity > 0)
-                {
-                    _preparedOrders.Add((ChickenOrder)_cook.NewRequest(true, chickenQuantity));
-                }
+                preparedOrders[order, 0] = ((ChickenOrder)_cook.NewRequest(true, chickenQuantity));
+                preparedOrders[order, 1] = ((EggOrder)_cook.NewRequest(false, eggQuantity));
                 if (eggQuantity > 0)
                 {
-                    _preparedOrders.Add((EggOrder)_cook.NewRequest(false, eggQuantity));
-                    eggQuality += ", " + _cook.Inspect(_preparedOrders.Last());
+                    if (order > 0)
+                        eggQuality += ", ";
+                    eggQuality += _cook.Inspect(preparedOrders[order, 1]);
                 }
+                preparedOrders[order, 2] = _orders[order][_orders[order].Length - 1];
             }
 
+            _preparedOrders = preparedOrders;
             return eggQuality;
         }
         public string ServeFood()
         {
             string summary = "";
 
-            for (int order = 0; order < _preparedOrders.Count(); order++)
+            for (int order = 0; order < _preparedOrders.GetLength(0); order++)
             {
-                summary += _cook.PrepareFood(_preparedOrders[order]) + $" for Customer {order}. ";
+                summary += _cook.PrepareFood(_preparedOrders[order, 0]) + ", " + _cook.PrepareFood(_preparedOrders[order, 1]) + " and " + _preparedOrders[order, 2] + $" for Customer {order}\n";
             }
 
             return summary;

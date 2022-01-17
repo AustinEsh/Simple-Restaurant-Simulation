@@ -32,7 +32,8 @@ namespace Simple_Restaurant_Simulation
         Tea = 3,
         Water = 4,
         ChocolateMilk = 5,
-        JockoFuel = 6
+        JockoFuel = 6,
+        NoDrink = 7
     }
 
     public sealed partial class MainPage : Page

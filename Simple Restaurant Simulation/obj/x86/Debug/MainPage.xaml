@@ -1,0 +1,33 @@
+﻿<Page
+    x:Class="Simple_Restaurant_Simulation.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Simple_Restaurant_Simulation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Canvas>
+        <TextBlock Canvas.Left="70" Canvas.Top="10" Text="Menu" TextWrapping="Wrap" FontSize="30"/>
+        <TextBlock Canvas.Left="125" Canvas.Top="90" Text="How many chicken?" TextWrapping="Wrap" FontSize="30" Height="50"/>
+        <TextBlock Canvas.Left="125" Canvas.Top="150" Text="How many egg?" TextWrapping="Wrap" FontSize="30" Height="50"/>
+        <TextBox x:ConnectionId='2' x:Name="ChickenQuantity" Canvas.Left="430" Canvas.Top="90" TextWrapping="Wrap" Height="50" Width="75" FontSize="30"/>
+        <TextBox x:ConnectionId='3' x:Name="EggQuantity" Canvas.Left="430" Canvas.Top="150" TextWrapping="Wrap" Height="50" Width="75" FontSize="30"/>
+        <ComboBox x:ConnectionId='4' Canvas.Left="625" Canvas.Top="105" Width="200" x:Name="DrinkOption" Header="Drink" Height="110" FontSize="30">
+            <ComboBoxItem x:ConnectionId='10' Content="No Drink" x:Name="NoDrink"/>
+            <ComboBoxItem x:ConnectionId='11' Content="Water" x:Name="Water"/>
+            <ComboBoxItem x:ConnectionId='12' Content="Coffee" x:Name="Coffee"/>
+            <ComboBoxItem x:ConnectionId='13' Content="Tea" x:Name="Tea"/>
+            <ComboBoxItem x:ConnectionId='14' Content="Chocolate Milk" x:Name="ChocolateMilk"/>
+            <ComboBoxItem x:ConnectionId='15' Content="Jocko Fuel" x:Name="JockoFuel"/>
+        </ComboBox>
+        <Button x:ConnectionId='5' x:Name="ReceiveRequest" Content="Receive this request from a customer" Canvas.Left="138" Canvas.Top="275" Width="750" FontSize="30"                             />
+        <Button x:ConnectionId='6' x:Name="SendRequests" Content="Send all customer requests to the cook" Canvas.Left="138" Canvas.Top="375" Width="750" FontSize="30"                           />
+        <TextBlock Canvas.Left="225" Canvas.Top="450" Text="Egg Quality:" TextWrapping="Wrap" FontSize="30"/>
+        <TextBlock x:ConnectionId='7' x:Name="EggQuality" Canvas.Left="400" Canvas.Top="450" TextWrapping="Wrap" FontSize="30"/>
+        <Button x:ConnectionId='8' Content="Serve prepared food to the customers" Canvas.Left="138" Canvas.Top="525" Width="750" FontSize="30"                        />
+        <TextBlock Canvas.Left="125" Canvas.Top="600" Text="Results" TextWrapping="Wrap" FontSize="30"/>
+        <TextBlock x:ConnectionId='9' x:Name="Results" Canvas.Left="125" Canvas.Top="675" TextWrapping="Wrap" FontSize="30" Height="250" Width="1250"/>
+    </Canvas>
+</Page>
+

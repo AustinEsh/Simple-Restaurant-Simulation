@@ -49,7 +49,7 @@ namespace Simple_Restaurant_Simulation
 
                     chickenOrder.Cook();
 
-                    return quantity.ToString() + " chickens.";
+                    return quantity.ToString() + " chickens";
                 }
                 else
                 {
@@ -63,26 +63,24 @@ namespace Simple_Restaurant_Simulation
 
                     eggOrder.Cook();
 
-                    return quantity.ToString() + " eggs.";
+                    return quantity.ToString() + " eggs";
                 }
-
             }
             catch (System.NullReferenceException)
             {
-                throw new System.NullReferenceException("There is no order to prepare.");
+                throw new System.NullReferenceException();
             }
-
         }
-        public string Inspect(object order)
+        public string Inspect(object eggOrder)
         {
-            if (order is ChickenOrder)
+            EggOrder _eggOrder = (EggOrder)eggOrder;
+            if (_eggOrder.GetQuantity() <= 0)
             {
                 return "No eggs ordered.";
             }
             else
             {
-                EggOrder eggOrder = (EggOrder)order;
-                return eggOrder.GetQuality().ToString();
+                return _eggOrder.GetQuality().ToString();
             }
         }
     }
