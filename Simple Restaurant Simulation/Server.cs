@@ -77,6 +77,8 @@ namespace Simple_Restaurant_Simulation
                 }
 
                 _preparedOrders = preparedOrders;
+                _orderCount = 0;
+                Array.Clear(_orders, 0, _orders.Length);
                 return eggQuality;
             }
             else
@@ -118,6 +120,7 @@ namespace Simple_Restaurant_Simulation
                     summary += _cook.PrepareFood(_preparedOrders[order, 0]) + ", " + _cook.PrepareFood(_preparedOrders[order, 1]) + " and " + drink + $" for Customer {order}\n";
                 }
 
+                Array.Clear(_preparedOrders, 0, _preparedOrders.Length);
                 return summary;
             }
             catch

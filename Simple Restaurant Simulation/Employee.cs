@@ -47,7 +47,7 @@ namespace Simple_Restaurant_Simulation
 
                 chickenOrder.Cook();
 
-                return quantity.ToString() + " chickens";
+                return quantity.ToString() + " chicken";
             }
             else
             {
@@ -61,7 +61,7 @@ namespace Simple_Restaurant_Simulation
 
                 eggOrder.Cook();
 
-                return quantity.ToString() + " eggs";
+                return quantity.ToString() + " egg";
             }
         }
         public string Inspect(object eggOrder)

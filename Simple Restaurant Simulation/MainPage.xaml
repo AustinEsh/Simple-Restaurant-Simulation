@@ -13,7 +13,7 @@
         <TextBlock Canvas.Left="125" Canvas.Top="150" Text="How many egg?" TextWrapping="Wrap" FontSize="30" Height="50"/>
         <TextBox x:Name="ChickenQuantity" Canvas.Left="430" Canvas.Top="90" TextWrapping="Wrap" Height="50" Width="75" FontSize="30"/>
         <TextBox x:Name="EggQuantity" Canvas.Left="430" Canvas.Top="150" TextWrapping="Wrap" Height="50" Width="75" FontSize="30"/>
-        <ComboBox Canvas.Left="625" Canvas.Top="105" Width="200" x:Name="DrinkOption" Header="Drink" Height="110" FontSize="30">
+        <ComboBox Canvas.Left="625" Canvas.Top="105" Width="250" x:Name="DrinkOption" Header="Drink" Height="110" FontSize="30">
             <ComboBoxItem Content="No Drink" x:Name="NoDrink" IsSelected="True"/>
             <ComboBoxItem Content="Water" x:Name="Water"/>
             <ComboBoxItem Content="Coffee" x:Name="Coffee"/>
@@ -24,9 +24,9 @@
         <Button x:Name="ReceiveRequest" Content="Receive this request from a customer" Canvas.Left="138" Canvas.Top="275" Width="750" FontSize="30" Click="ReceiveRequest_Click"/>
         <Button x:Name="SendRequests" Content="Send all customer requests to the cook" Canvas.Left="138" Canvas.Top="375" Width="750" FontSize="30" Click="SendRequests_Click"/>
         <TextBlock Canvas.Left="225" Canvas.Top="450" Text="Egg Quality:" TextWrapping="Wrap" FontSize="30"/>
-        <TextBlock x:Name="EggQuality" Canvas.Left="400" Canvas.Top="450" TextWrapping="Wrap" FontSize="30"/>
+        <TextBlock x:Name="EggQuality" Canvas.Left="400" Canvas.Top="450" TextWrapping="Wrap" FontSize="30" Width="1100" Height="50"/>
         <Button Content="Serve prepared food to the customers" Canvas.Left="138" Canvas.Top="525" Width="750" FontSize="30" Click="ServeFood_Click"/>
         <TextBlock Canvas.Left="125" Canvas.Top="600" Text="Results" TextWrapping="Wrap" FontSize="30"/>
-        <TextBlock x:Name="Results" Canvas.Left="125" Canvas.Top="675" TextWrapping="Wrap" FontSize="30" Height="250" Width="1250"/>
+        <TextBlock x:Name="Results" Canvas.Left="250" Canvas.Top="600" TextWrapping="Wrap" FontSize="20" Height="400" Width="1250"/>
     </Canvas>
 </Page>

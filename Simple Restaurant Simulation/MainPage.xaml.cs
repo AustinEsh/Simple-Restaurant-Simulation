@@ -47,13 +47,29 @@ namespace Simple_Restaurant_Simulation
 
         private void ReceiveRequest_Click(object sender, RoutedEventArgs e)
         {
-            server.TakeOrder(ChickenQuantity.Text, EggQuantity.Text, ((ComboBoxItem)DrinkOption.SelectedValue).Name);
+            try
+            {
+                Results.Text = "";
+                server.TakeOrder(ChickenQuantity.Text, EggQuantity.Text, ((ComboBoxItem)DrinkOption.SelectedValue).Name);
+                ChickenQuantity.Text = "";
+                EggQuantity.Text = "";
+                DrinkOption.SelectedItem = NoDrink;
+            }
+            catch (InvalidOperationException error)
+            {
+                Results.Text = error.Message;
+            }
+            catch (Exception)
+            {
+                Results.Text = "Sorry, something went wrong.";
+            }
         }
 
         private void SendRequests_Click(object sender, RoutedEventArgs e)
         {
             try
             {
+                Results.Text = "";
                 EggQuality.Text = server.SendOrder();
             }
             catch (InvalidOperationException error)
@@ -71,6 +87,7 @@ namespace Simple_Restaurant_Simulation
             try
             {
                 Results.Text = server.ServeFood();
+                EggQuality.Text = "";
             }
             catch (InvalidOperationException error)
             {
