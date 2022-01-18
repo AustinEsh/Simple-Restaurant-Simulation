@@ -9,23 +9,22 @@ namespace Simple_Restaurant_Simulation
         int _orderCount;
         object[,] _preparedOrders;
 
-        public void TakeOrder(string chickenQuantity, string eggQuantity, string drink)
+        //TODO: Change chickenQuantity and eggQuantity arguments to type int
+        public void TakeOrder(int chickenQuantity, int eggQuantity, string drink)
         {
             try
             {
-                int.TryParse(chickenQuantity, out int _chickenQuantity);
-                int.TryParse(eggQuantity, out int _eggQuantity);
-                MenuItem[] order = new MenuItem[_chickenQuantity + _eggQuantity + 1];
+                MenuItem[] order = new MenuItem[chickenQuantity + eggQuantity + 1];
 
-                for (int i = 0; i < _chickenQuantity; i++)
+                for (int i = 0; i < chickenQuantity; i++)
                 {
                     order[i] = MenuItem.Chicken;
                 }
-                for (int i = _chickenQuantity; i < _eggQuantity + _chickenQuantity; i++)
+                for (int i = chickenQuantity; i < eggQuantity + chickenQuantity; i++)
                 {
                     order[i] = MenuItem.Egg;
                 }
-                order[_chickenQuantity + _eggQuantity] = (MenuItem)Enum.Parse(typeof(MenuItem), drink);
+                order[chickenQuantity + eggQuantity] = (MenuItem)Enum.Parse(typeof(MenuItem), drink);
                 _orders[_orderCount] = order;
                 _orderCount++;
             }
@@ -47,12 +46,12 @@ namespace Simple_Restaurant_Simulation
                     int eggQuantity = 0;
                     foreach (MenuItem item in _orders[order])
                     {
-                        switch (item.ToString())
+                        switch (item)
                         {
-                            case "Chicken":
+                            case MenuItem.Chicken:
                                 chickenQuantity++;
                                 break;
-                            case "Egg":
+                            case MenuItem.Egg:
                                 eggQuantity++;
                                 break;
                         }
@@ -110,7 +109,8 @@ namespace Simple_Restaurant_Simulation
                             break;
                     }
 
-                    summary += _cook.PrepareFood(_preparedOrders[order, 0]) + ", " + _cook.PrepareFood(_preparedOrders[order, 1]) + " and " + drink + $" for Customer {order}\n";
+                    //TODO: Create variables for prepared egg and chicken
+                    summary += $"{_cook.PrepareFood(_preparedOrders[order, 0])}, {_cook.PrepareFood(_preparedOrders[order, 1])} and {drink} for Customer {order}\n";
                 }
 
                 Array.Clear(_preparedOrders, 0, _preparedOrders.Length);

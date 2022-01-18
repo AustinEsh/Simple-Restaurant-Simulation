@@ -37,7 +37,9 @@ namespace Simple_Restaurant_Simulation
             try
             {
                 Results.Text = "";
-                server.TakeOrder(ChickenQuantity.Text, EggQuantity.Text, ((ComboBoxItem)DrinkOption.SelectedValue).Name);
+                int.TryParse(ChickenQuantity.Text, out int chickenQuantity);
+                int.TryParse(EggQuantity.Text, out int eggQuantity);
+                server.TakeOrder(chickenQuantity, eggQuantity, ((ComboBoxItem)DrinkOption.SelectedValue).Name);
                 ChickenQuantity.Text = "";
                 EggQuantity.Text = "";
                 DrinkOption.SelectedItem = NoDrink;
