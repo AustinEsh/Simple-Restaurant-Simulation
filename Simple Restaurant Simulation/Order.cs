@@ -10,7 +10,7 @@ namespace Simple_Restaurant_Simulation
     {
         int _quantity;
 
-        public Order(int quantity)
+        protected Order(int quantity)
         {
             _quantity = quantity;
         }
