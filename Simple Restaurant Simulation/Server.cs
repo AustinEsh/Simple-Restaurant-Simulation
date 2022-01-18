@@ -7,17 +7,14 @@ namespace Simple_Restaurant_Simulation
         readonly Cook _cook = new Cook();
         readonly MenuItem[][] _orders = new MenuItem[8][];
         int _orderCount;
-        readonly object[,] _preparedOrders;
+        object[,] _preparedOrders;
 
         public void TakeOrder(string chickenQuantity, string eggQuantity, string drink)
         {
             if (_orderCount < 8)
             {
-                int _chickenQuantity;
-                int _eggQuantity;
-
-                int.TryParse(chickenQuantity, out _chickenQuantity);
-                int.TryParse(eggQuantity, out _eggQuantity);
+                int.TryParse(chickenQuantity, out int _chickenQuantity);
+                int.TryParse(eggQuantity, out int _eggQuantity);
                 MenuItem[] order = new MenuItem[_chickenQuantity + _eggQuantity + 1];
 
                 for (int i = 0; i < _chickenQuantity; i++)
@@ -90,7 +87,7 @@ namespace Simple_Restaurant_Simulation
 
                 for (int order = 0; order < _preparedOrders.GetLength(0); order++)
                 {
-                    string drink = "no drink";
+                    string drink;
                     switch (_preparedOrders[order, 2])
                     {
                         case MenuItem.ChocolateMilk:

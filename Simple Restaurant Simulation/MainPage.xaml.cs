@@ -13,14 +13,14 @@ namespace Simple_Restaurant_Simulation
 
     public enum MenuItem
     {
-        Chicken = 0,
-        Egg = 1,
-        Coffee = 2,
-        Tea = 3,
-        Water = 4,
-        ChocolateMilk = 5,
-        JockoFuel = 6,
-        NoDrink = 7
+        Chicken,
+        Egg,
+        Coffee,
+        Tea,
+        Water,
+        ChocolateMilk,
+        JockoFuel,
+        NoDrink
     }
 
     public sealed partial class MainPage : Page
