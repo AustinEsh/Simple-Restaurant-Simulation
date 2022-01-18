@@ -10,7 +10,7 @@ namespace Simple_Restaurant_Simulation
 {
     public class EggOrder : Order
     {
-        public int _quality;
+        readonly int _quality;
 
         public EggOrder(int quantity)
             : base(quantity)

@@ -1,24 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Simple_Restaurant_Simulation
 {
     public class Server
     {
-        Cook _cook = new Cook();
-        MenuItem[][] _orders = new MenuItem[8][];
+        readonly Cook _cook = new Cook();
+        readonly MenuItem[][] _orders = new MenuItem[8][];
         int _orderCount;
-        object[,] _preparedOrders;
+        readonly object[,] _preparedOrders;
 
         public void TakeOrder(string chickenQuantity, string eggQuantity, string drink)
         {
             if (_orderCount < 8)
             {
-                int _chickenQuantity = 0;
-                int _eggQuantity = 0;
+                int _chickenQuantity;
+                int _eggQuantity;
 
                 int.TryParse(chickenQuantity, out _chickenQuantity);
                 int.TryParse(eggQuantity, out _eggQuantity);
