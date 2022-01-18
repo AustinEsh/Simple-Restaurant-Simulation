@@ -9,7 +9,6 @@ namespace Simple_Restaurant_Simulation
         int _orderCount;
         object[,] _preparedOrders;
 
-        //TODO: Change chickenQuantity and eggQuantity arguments to type int
         public void TakeOrder(int chickenQuantity, int eggQuantity, string drink)
         {
             try
@@ -109,8 +108,9 @@ namespace Simple_Restaurant_Simulation
                             break;
                     }
 
-                    //TODO: Create variables for prepared egg and chicken
-                    summary += $"{_cook.PrepareFood(_preparedOrders[order, 0])}, {_cook.PrepareFood(_preparedOrders[order, 1])} and {drink} for Customer {order}\n";
+                    string chicken = _cook.PrepareFood(_preparedOrders[order, 0]);
+                    string egg = _cook.PrepareFood(_preparedOrders[order, 1]);
+                    summary += $"{chicken}, {egg} and {drink} for Customer {order}\n";
                 }
 
                 Array.Clear(_preparedOrders, 0, _preparedOrders.Length);
