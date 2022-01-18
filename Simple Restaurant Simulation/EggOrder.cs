@@ -8,49 +8,26 @@ using Windows.Security.Credentials.UI;
 
 namespace Simple_Restaurant_Simulation
 {
-    public class EggOrder
+    public class EggOrder : Order
     {
-        public int _quantity;
-        public int _quality;
-        static bool checkQuality;
+        readonly int _quality;
 
         public EggOrder(int quantity)
+            : base(quantity)
         {
-            _quantity = quantity;
             Random rand = new Random();
             _quality = rand.Next(101);
-            checkQuality = !checkQuality;
         }
 
-        public int GetQuantity()
+        public int GetQuality()
         {
-            return _quantity;
+            return _quality;
         }
-
-        public int? GetQuality()
-        {
-            if (checkQuality)
-            {
-                return _quality;
-            }
-
-            return null;
-        }
-
         public void Crack()
         {
-            if (_quality < 25)
-            {
-                throw new InvalidOperationException("The eggs are rotten.");
-            }
-        }
 
+        }
         public void DiscardShell()
-        {
-
-        }
-
-        public void Cook()
         {
 
         }

@@ -7,31 +7,26 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
-    <Grid>
-        <Canvas Margin="10,10,-10,-10">
-            <TextBlock Height="80" Canvas.Left="84" Canvas.Top="201" Text="Quantity" TextWrapping="Wrap" Width="190" FontSize="40"/>
-            <TextBox x:Name="OrderQuantity" Height="60" Canvas.Left="290" Canvas.Top="194" Text="" TextWrapping="Wrap" Width="203" FontSize="40"/>
-            <RelativePanel Canvas.Left="84" Canvas.Top="93">
-                <RadioButton x:Name="chickenOpt" Content="Chicken&#xA;" Canvas.Left="84" Canvas.Top="93" Height="108" Width="206" FontSize="40" RenderTransformOrigin="0.5,0.5" GroupName="FoodOption" IsChecked="True">
-                    <RadioButton.RenderTransform>
-                        <CompositeTransform ScaleX="1" ScaleY="1"/>
-                    </RadioButton.RenderTransform>
-                    <RadioButton.Projection>
-                        <PlaneProjection RotationY="0"/>
-                    </RadioButton.Projection>
-                </RadioButton>
-            </RelativePanel>
-            <RadioButton x:Name="eggOpt" Content="Egg" Height="74" Canvas.Left="296" Canvas.Top="93" Width="252" FontSize="40" GroupName="FoodOption"/>
-            <TextBlock x:Name ="Menu" Height="71" Canvas.Left="84" Text="Menu" TextWrapping="Wrap" Width="184" FontSize="40" Canvas.Top="10"/>
-            <Button x:Name="SubmitNewRequest" Content="Submit new request" Height="64" Canvas.Left="546" Canvas.Top="192" Width="378" FontSize="40" Click="SubmitNewRequest_Click"/>
-            <Button x:Name="CopyPreviousRequest" Content="Copy the previous request" Height="80" Canvas.Left="135" Canvas.Top="280" Width="742" FontSize="40" Click="CopyPreviousRequest_Click"/>
-            <TextBlock Height="96" Canvas.Left="54" Canvas.Top="365" Text="Egg Quality:" TextWrapping="Wrap" Width="258" FontSize="40"/>
-            <Button x:Name="PrepareFood" Content="Prepare Food" Height="80" Canvas.Left="135" Canvas.Top="423" Width="742" FontSize="40" Click="PrepareFood_Click"/>
-            <TextBlock Height="91" Canvas.Left="63" Canvas.Top="508" Text="Results" TextWrapping="Wrap" Width="251" FontSize="40"/>
-            <TextBlock x:Name="EggQuality" Height="49" Canvas.Left="290" Canvas.Top="370" Text="" TextWrapping="Wrap" Width="587" FontSize="40"/>
-            <TextBlock x:Name ="Results" Height="122" Canvas.Left="253" Canvas.Top="508" Text="" TextWrapping="Wrap" Width="624" FontSize="40"/>
-        </Canvas>
-
-    </Grid>
+    <Canvas>
+        <TextBlock Canvas.Left="70" Canvas.Top="10" Text="Menu" TextWrapping="Wrap" FontSize="30"/>
+        <TextBlock Canvas.Left="125" Canvas.Top="90" Text="How many chicken?" TextWrapping="Wrap" FontSize="30" Height="50"/>
+        <TextBlock Canvas.Left="125" Canvas.Top="150" Text="How many egg?" TextWrapping="Wrap" FontSize="30" Height="50"/>
+        <TextBox x:Name="ChickenQuantity" Canvas.Left="430" Canvas.Top="90" TextWrapping="Wrap" Height="50" Width="75" FontSize="30"/>
+        <TextBox x:Name="EggQuantity" Canvas.Left="430" Canvas.Top="150" TextWrapping="Wrap" Height="50" Width="75" FontSize="30"/>
+        <ComboBox Canvas.Left="625" Canvas.Top="105" Width="250" x:Name="DrinkOption" Header="Drink" Height="110" FontSize="30">
+            <ComboBoxItem Content="No Drink" x:Name="NoDrink" IsSelected="True"/>
+            <ComboBoxItem Content="Water" x:Name="Water"/>
+            <ComboBoxItem Content="Coffee" x:Name="Coffee"/>
+            <ComboBoxItem Content="Tea" x:Name="Tea"/>
+            <ComboBoxItem Content="Chocolate Milk" x:Name="ChocolateMilk"/>
+            <ComboBoxItem Content="Jocko Fuel" x:Name="JockoFuel"/>
+        </ComboBox>
+        <Button x:Name="ReceiveRequest" Content="Receive this request from a customer" Canvas.Left="138" Canvas.Top="275" Width="750" FontSize="30" Click="ReceiveRequest_Click"/>
+        <Button x:Name="SendRequests" Content="Send all customer requests to the cook" Canvas.Left="138" Canvas.Top="375" Width="750" FontSize="30" Click="SendRequests_Click"/>
+        <TextBlock Canvas.Left="225" Canvas.Top="450" Text="Egg Quality:" TextWrapping="Wrap" FontSize="30"/>
+        <TextBlock x:Name="EggQuality" Canvas.Left="400" Canvas.Top="450" TextWrapping="Wrap" FontSize="30" Width="1100" Height="50"/>
+        <Button Content="Serve prepared food to the customers" Canvas.Left="138" Canvas.Top="525" Width="750" FontSize="30" Click="ServeFood_Click"/>
+        <TextBlock Canvas.Left="125" Canvas.Top="600" Text="Results" TextWrapping="Wrap" FontSize="30"/>
+        <TextBlock x:Name="Results" Canvas.Left="250" Canvas.Top="600" TextWrapping="Wrap" FontSize="20" Height="400" Width="1250"/>
+    </Canvas>
 </Page>
