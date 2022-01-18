@@ -8,7 +8,7 @@ namespace Simple_Restaurant_Simulation
 {
     public class Order
     {
-        public int _quantity;
+        int _quantity;
 
         public Order(int quantity)
         {

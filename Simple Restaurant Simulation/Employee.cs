@@ -20,20 +20,6 @@ namespace Simple_Restaurant_Simulation
                 return _order;
             }
         }
-        public object CopyRequest()
-        {
-            if (_order is ChickenOrder chickenOrder)
-            {
-                return chickenOrder._quantity;
-            }
-            else
-            {
-                EggOrder order = (EggOrder)_order;
-                EggOrder newOrder = new EggOrder(order._quantity);
-                newOrder._quality = order._quality;
-                return newOrder;
-            }
-        }
         public string PrepareFood(object order)
         {
             if (order is ChickenOrder)
