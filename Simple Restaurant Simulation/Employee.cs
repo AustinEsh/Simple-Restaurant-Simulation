@@ -50,18 +50,9 @@ namespace Simple_Restaurant_Simulation
                 return quantity.ToString() + " egg";
             }
         }
-        //TODO: Return int
         public string Inspect(object eggOrder)
         {
-            EggOrder _eggOrder = (EggOrder)eggOrder;
-            if (_eggOrder.GetQuantity() <= 0)
-            {
-                return "No eggs ordered.";
-            }
-            else
-            {
-                return _eggOrder.GetQuality().ToString();
-            }
+            return ((EggOrder)eggOrder).GetQuality().ToString();
         }
     }
 }
