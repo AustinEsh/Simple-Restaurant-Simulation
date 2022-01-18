@@ -42,7 +42,7 @@ namespace Simple_Restaurant_Simulation
                 EggQuantity.Text = "";
                 DrinkOption.SelectedItem = NoDrink;
             }
-            catch (InvalidOperationException error)
+            catch (IndexOutOfRangeException error)
             {
                 Results.Text = error.Message;
             }

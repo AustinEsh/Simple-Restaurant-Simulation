@@ -11,7 +11,7 @@ namespace Simple_Restaurant_Simulation
 
         public void TakeOrder(string chickenQuantity, string eggQuantity, string drink)
         {
-            if (_orderCount < 8)
+            try
             {
                 int.TryParse(chickenQuantity, out int _chickenQuantity);
                 int.TryParse(eggQuantity, out int _eggQuantity);
@@ -29,9 +29,9 @@ namespace Simple_Restaurant_Simulation
                 _orders[_orderCount] = order;
                 _orderCount++;
             }
-            else
+            catch (IndexOutOfRangeException)
             {
-                throw new InvalidOperationException("Only eight people may be seated at one table.");
+                throw new IndexOutOfRangeException("Only eight people may be seated at one table.");
             }
         }
         public string SendOrder()
