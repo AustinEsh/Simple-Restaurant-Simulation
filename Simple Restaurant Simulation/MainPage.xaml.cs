@@ -11,18 +11,6 @@ namespace Simple_Restaurant_Simulation
     /// </summary>
     /// 
 
-    public enum MenuItem
-    {
-        Chicken,
-        Egg,
-        Coffee,
-        Tea,
-        Water,
-        ChocolateMilk,
-        JockoFuel,
-        NoDrink
-    }
-
     public sealed partial class MainPage : Page
     {
         public MainPage()
@@ -59,7 +47,7 @@ namespace Simple_Restaurant_Simulation
             try
             {
                 Results.Text = "";
-                EggQuality.Text = server.SendOrder();
+                server.SendOrder();
             }
             catch (InvalidOperationException error)
             {
@@ -76,7 +64,6 @@ namespace Simple_Restaurant_Simulation
             try
             {
                 Results.Text = server.ServeFood();
-                EggQuality.Text = "";
             }
             catch (InvalidOperationException error)
             {

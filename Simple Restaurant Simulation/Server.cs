@@ -1,76 +1,54 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Simple_Restaurant_Simulation
 {
     public class Server
     {
         readonly Cook _cook = new Cook();
-        readonly MenuItem[][] _orders = new MenuItem[8][];
-        int _orderCount;
-        object[,] _preparedOrders;
+        TableRequests _tableRequests;
+        int _customer;
 
         public void TakeOrder(int chickenQuantity, int eggQuantity, string drink)
         {
-            try
+            if (_customer == 0)
             {
-                MenuItem[] order = new MenuItem[chickenQuantity + eggQuantity + 1];
+                _tableRequests = new TableRequests();
+            }
 
-                for (int i = 0; i < chickenQuantity; i++)
-                {
-                    order[i] = MenuItem.Chicken;
-                }
-                for (int i = chickenQuantity; i < eggQuantity + chickenQuantity; i++)
-                {
-                    order[i] = MenuItem.Egg;
-                }
-                order[chickenQuantity + eggQuantity] = (MenuItem)Enum.Parse(typeof(MenuItem), drink);
-                _orders[_orderCount] = order;
-                _orderCount++;
-            }
-            catch (IndexOutOfRangeException)
+            _tableRequests.Add(_customer, new ChickenOrder(chickenQuantity));
+            _tableRequests.Add(_customer, new EggOrder(eggQuantity));
+            ItemInterface _drink;
+            switch (drink)
             {
-                throw new IndexOutOfRangeException("Only eight people may be seated at one table.");
+                case "Coffee":
+                    _drink = new Coffee();
+                    break;
+                case "Tea":
+                    _drink = new Tea();
+                    break;
+                case "Water":
+                    _drink = new Water();
+                    break;
+                case "Chocolate Milk":
+                    _drink = new ChocolateMilk();
+                    break;
+                case "Jocko Fuel":
+                    _drink = new JockoFuel();
+                    break;
+                default:
+                    _drink = null;
+                    break;
             }
+            _tableRequests.Add(_customer, _drink);
+
+            _customer++;
         }
-        public string SendOrder()
+        public void SendOrder()
         {
-            if (_orderCount > 0)
+            if (_customer > 0)
             {
-                object[,] preparedOrders = new object[_orderCount, 3];
-                string eggQuality = "";
-
-                for (int order = 0; order < _orderCount; order++)
-                {
-                    int chickenQuantity = 0;
-                    int eggQuantity = 0;
-                    foreach (MenuItem item in _orders[order])
-                    {
-                        switch (item)
-                        {
-                            case MenuItem.Chicken:
-                                chickenQuantity++;
-                                break;
-                            case MenuItem.Egg:
-                                eggQuantity++;
-                                break;
-                        }
-                    }
-
-                    preparedOrders[order, 0] = ((ChickenOrder)_cook.NewRequest(true, chickenQuantity));
-                    preparedOrders[order, 1] = ((EggOrder)_cook.NewRequest(false, eggQuantity));
-                    if (eggQuantity > 0)
-                    {
-                        if (order > 0)
-                            eggQuality += ", ";
-                        eggQuality += _cook.Inspect(preparedOrders[order, 1]);
-                    }
-                    preparedOrders[order, 2] = _orders[order][_orders[order].Length - 1];
-                }
-
-                _preparedOrders = preparedOrders;
-                _orderCount = 0;
-                Array.Clear(_orders, 0, _orders.Length);
-                return eggQuality;
+                _cook.Process(_tableRequests);
             }
             else
             {
@@ -83,37 +61,14 @@ namespace Simple_Restaurant_Simulation
             {
                 string summary = "";
 
-                for (int order = 0; order < _preparedOrders.GetLength(0); order++)
+                for (int i = 0; i < _customer; i++)
                 {
-                    string drink;
-                    switch (_preparedOrders[order, 2])
-                    {
-                        case MenuItem.ChocolateMilk:
-                            drink = "Chocolate Milk";
-                            break;
-                        case MenuItem.Coffee:
-                            drink = "Coffee";
-                            break;
-                        case MenuItem.JockoFuel:
-                            drink = "Jocko Fuel";
-                            break;
-                        case MenuItem.Tea:
-                            drink = "Tea";
-                            break;
-                        case MenuItem.Water:
-                            drink = "Water";
-                            break;
-                        default:
-                            drink = "no drink";
-                            break;
-                    }
-
-                    string chicken = _cook.PrepareFood(_preparedOrders[order, 0]);
-                    string egg = _cook.PrepareFood(_preparedOrders[order, 1]);
-                    summary += $"{chicken}, {egg} and {drink} for Customer {order}\n";
+                    string chicken = ((ChickenOrder)_tableRequests[i][0]).Serve();
+                    string egg = ((EggOrder)_tableRequests[i][1]).Serve();
+                    string drink = ((Drink)_tableRequests[i][2]).Serve();
+                    summary += $"{chicken}, {egg} and {drink} for Customer {i}\n";
                 }
 
-                Array.Clear(_preparedOrders, 0, _preparedOrders.Length);
                 return summary;
             }
             catch

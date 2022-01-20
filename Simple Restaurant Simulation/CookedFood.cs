@@ -6,18 +6,21 @@ using System.Threading.Tasks;
 
 namespace Simple_Restaurant_Simulation
 {
-    public class Order
+    public abstract class CookedFood : MenuItem
     {
         readonly int _quantity;
 
-        protected Order(int quantity)
+        public CookedFood(int quantity)
         {
             _quantity = quantity;
         }
 
-        public int GetQuantity()
+        public int Quantity
         {
-            return _quantity;
+            get
+            {
+                return _quantity;
+            }
         }
         public void Cook()
         {

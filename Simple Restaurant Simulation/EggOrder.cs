@@ -8,7 +8,7 @@ using Windows.Security.Credentials.UI;
 
 namespace Simple_Restaurant_Simulation
 {
-    public class EggOrder : Order
+    public sealed class EggOrder : CookedFood
     {
         readonly int _quality;
 
@@ -19,9 +19,12 @@ namespace Simple_Restaurant_Simulation
             _quality = rand.Next(101);
         }
 
-        public int GetQuality()
+        public int Quality
         {
-            return _quality;
+            get
+            {
+                return _quality;
+            }
         }
         public void Crack()
         {
@@ -30,6 +33,10 @@ namespace Simple_Restaurant_Simulation
         public void DiscardShell()
         {
 
+        }
+        public override string Serve()
+        {
+            return "egg";
         }
     }
 }

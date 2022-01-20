@@ -7,7 +7,7 @@ using Windows.Security.Credentials.UI;
 
 namespace Simple_Restaurant_Simulation
 {
-    public class ChickenOrder : Order
+    public sealed class ChickenOrder : CookedFood
     {
         public ChickenOrder(int quantity)
             : base(quantity)
@@ -18,6 +18,10 @@ namespace Simple_Restaurant_Simulation
         public void CutUp()
         {
 
+        }
+        public override string Serve()
+        {
+            return "chicken";
         }
     }
 }
