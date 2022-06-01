@@ -10,7 +10,7 @@ namespace Simple_Restaurant_Simulation
     {
         public override string Serve()
         {
-            return "Jocko Fuel";
+            return "jocko fuel";
         }
     }
 }

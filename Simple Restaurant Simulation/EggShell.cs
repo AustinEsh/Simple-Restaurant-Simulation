@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Simple_Restaurant_Simulation
 {
-    public interface ItemInterface
+    class EggShell : IDisposable
     {
-        void Request();
-        void Obtain();
-        string Serve();
+        void IDisposable.Dispose()
+        {
+        }
     }
 }

@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.Security.Credentials.UI;
 
 namespace Simple_Restaurant_Simulation
 {
@@ -32,11 +26,14 @@ namespace Simple_Restaurant_Simulation
         }
         public void DiscardShell()
         {
-
+            using (EggShell shell = new EggShell())
+            {
+                ((IDisposable)shell).Dispose();
+            }
         }
         public override string Serve()
         {
-            return "egg";
+            return $"{this.Quantity} egg";
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Simple_Restaurant_Simulation
 {
@@ -8,10 +7,11 @@ namespace Simple_Restaurant_Simulation
         readonly Cook _cook = new Cook();
         TableRequests _tableRequests;
         int _customer;
+        object[] _drinks = new object[8];
 
         public void TakeOrder(int chickenQuantity, int eggQuantity, string drink)
         {
-            if (_customer == 0)
+            if (_customer == 0) 
             {
                 _tableRequests = new TableRequests();
             }
@@ -57,24 +57,25 @@ namespace Simple_Restaurant_Simulation
         }
         public string ServeFood()
         {
-            try
-            {
-                string summary = "";
+            string summary = "";
 
-                for (int i = 0; i < _customer; i++)
+            for (int i = 0; i < _customer; i++)
+            {
+                string chicken = ((ChickenOrder)_tableRequests[i][0]).Serve();
+                string egg = ((EggOrder)_tableRequests[i][1]).Serve();
+                if (_tableRequests[i][2] is null)
                 {
-                    string chicken = ((ChickenOrder)_tableRequests[i][0]).Serve();
-                    string egg = ((EggOrder)_tableRequests[i][1]).Serve();
-                    string drink = ((Drink)_tableRequests[i][2]).Serve();
-                    summary += $"{chicken}, {egg} and {drink} for Customer {i}\n";
+                    summary += $"{chicken} and {egg} for Customer {i}\n";
                 }
+                else
+                {
+                    string drink = ((Drink)_tableRequests[i][2]).Serve();
+                    summary += $"{chicken}, {egg}, and {drink} for Customer {i}\n";
+                }
+            }
 
-                return summary;
-            }
-            catch
-            {
-                throw new InvalidOperationException("There are no prepared orders to serve.");
-            }
+            _customer = 0;
+            return summary;
         }
     }
 }

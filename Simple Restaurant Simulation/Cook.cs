@@ -1,15 +1,17 @@
 ﻿using System.Runtime.InteropServices.ComTypes;
 using System.Security.Cryptography.X509Certificates;
+using System.Collections.Generic;
 
 namespace Simple_Restaurant_Simulation
 {
     public class Cook
     {
-        object _order;
 
         public void Process(TableRequests requests)
         {
-            foreach (ChickenOrder item in requests[typeof(ChickenOrder)])
+            List<object> chickenItems = requests[new ChickenOrder(1)];
+            List<object> eggItems = requests[new EggOrder(1)];
+            foreach (ChickenOrder item in chickenItems)
             {
                 item.Obtain();
                 for (int i = 0; i < item.Quantity; i++)
@@ -18,7 +20,7 @@ namespace Simple_Restaurant_Simulation
                 }
                 item.Cook();
             }
-            foreach (EggOrder item in requests[typeof(EggOrder)])
+            foreach (EggOrder item in eggItems)
             {
                 item.Obtain();
                 item.Crack();

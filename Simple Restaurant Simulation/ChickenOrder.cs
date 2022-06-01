@@ -21,7 +21,7 @@ namespace Simple_Restaurant_Simulation
         }
         public override string Serve()
         {
-            return "chicken";
+            return $"{this.Quantity} chicken";
         }
     }
 }
