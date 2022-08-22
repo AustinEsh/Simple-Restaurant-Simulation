@@ -1,23 +1,23 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Simple_Restaurant_Simulation
 {
     public class Server
     {
-        readonly Cook _cook = new Cook();
         TableRequests _tableRequests;
-        int _customer;
-        object[] _drinks = new object[8];
+        string[] _customers = new string[8];
+        int _customerCount = 0;
 
-        public void TakeOrder(int chickenQuantity, int eggQuantity, string drink)
+        public void TakeOrder(string name, int chickenQuantity, int eggQuantity, string drink)
         {
-            if (_customer == 0) 
+            if (_customerCount == 0)
             {
                 _tableRequests = new TableRequests();
             }
 
-            _tableRequests.Add(_customer, new ChickenOrder(chickenQuantity));
-            _tableRequests.Add(_customer, new EggOrder(eggQuantity));
+            _tableRequests.Add(name, new ChickenOrder(chickenQuantity));
+            _tableRequests.Add(name, new EggOrder(eggQuantity));
             ItemInterface _drink;
             switch (drink)
             {
@@ -30,51 +30,69 @@ namespace Simple_Restaurant_Simulation
                 case "Water":
                     _drink = new Water();
                     break;
-                case "Chocolate Milk":
+                case "ChocolateMilk":
                     _drink = new ChocolateMilk();
                     break;
-                case "Jocko Fuel":
+                case "JockoFuel":
                     _drink = new JockoFuel();
                     break;
                 default:
                     _drink = null;
                     break;
             }
-            _tableRequests.Add(_customer, _drink);
-
-            _customer++;
+            _tableRequests.Add(name, _drink);
+            _customers[_customerCount] = name;
         }
+        public delegate void OrdersTakenEventHandler(TableRequests _tableRequests);
+        public event OrdersTakenEventHandler OrdersTaken;
         public void SendOrder()
         {
-            if (_customer > 0)
+            if (_customers.Length > 0)
             {
-                _cook.Process(_tableRequests);
+                OnOrdersTaken(_tableRequests);
             }
             else
             {
                 throw new InvalidOperationException("There are no orders to send to the cook.");
             }
         }
+        protected virtual void OnOrdersTaken(TableRequests _tableRequests)
+        {
+            if (OrdersTaken != null)
+            {
+                OrdersTaken(_tableRequests);
+            }
+        }
+
         public string ServeFood()
         {
             string summary = "";
 
-            for (int i = 0; i < _customer; i++)
+            for (int i = 0; i < 8; i++)
             {
-                string chicken = ((ChickenOrder)_tableRequests[i][0]).Serve();
-                string egg = ((EggOrder)_tableRequests[i][1]).Serve();
-                if (_tableRequests[i][2] is null)
+                if (_customers[i] is null)
                 {
-                    summary += $"{chicken} and {egg} for Customer {i}\n";
+                    break;
+                }
+
+                object[] order = _tableRequests[_customers[i]];
+                EggOrder eggObj = (EggOrder)order[1];
+                string chicken = ((ChickenOrder)order[0]).Serve();
+                string egg = eggObj.Serve();
+                if (order[2] is null)
+                {
+                    summary += $"{chicken} and {egg} for {_customers[i]}\n";
                 }
                 else
                 {
-                    string drink = ((Drink)_tableRequests[i][2]).Serve();
-                    summary += $"{chicken}, {egg}, and {drink} for Customer {i}\n";
+                    string drink = ((Drink)order[2]).Serve();
+                    summary += $"{chicken}, {egg}, and {drink} for {_customers[i]}\n";
                 }
-            }
 
-            _customer = 0;
+                ((IDisposable)eggObj).Dispose();
+
+                _customers[i] = null;
+            }
             return summary;
         }
     }

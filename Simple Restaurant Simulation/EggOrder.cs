@@ -2,7 +2,7 @@
 
 namespace Simple_Restaurant_Simulation
 {
-    public sealed class EggOrder : CookedFood
+    public sealed class EggOrder : CookedFood, IDisposable
     {
         readonly int _quality;
 
@@ -26,14 +26,16 @@ namespace Simple_Restaurant_Simulation
         }
         public void DiscardShell()
         {
-            using (EggShell shell = new EggShell())
-            {
-                ((IDisposable)shell).Dispose();
-            }
         }
+
         public override string Serve()
         {
             return $"{this.Quantity} egg";
+        }
+
+        void IDisposable.Dispose()
+        {
+            DiscardShell();
         }
     }
 }

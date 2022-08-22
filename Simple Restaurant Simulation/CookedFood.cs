@@ -26,9 +26,5 @@ namespace Simple_Restaurant_Simulation
         {
 
         }
-        public void SubtractQuantity()
-        {
-
-        }
     }
 }

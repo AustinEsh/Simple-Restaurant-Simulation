@@ -19,6 +19,7 @@ namespace Simple_Restaurant_Simulation
         }
 
         public Server server = new Server();
+        readonly Cook cook = new Cook();
 
         private void ReceiveRequest_Click(object sender, RoutedEventArgs e)
         {
@@ -27,7 +28,7 @@ namespace Simple_Restaurant_Simulation
                 Results.Text = "";
                 int.TryParse(ChickenQuantity.Text, out int chickenQuantity);
                 int.TryParse(EggQuantity.Text, out int eggQuantity);
-                server.TakeOrder(chickenQuantity, eggQuantity, ((ComboBoxItem)DrinkOption.SelectedValue).Name);
+                server.TakeOrder(name.Text, chickenQuantity, eggQuantity, ((ComboBoxItem)DrinkOption.SelectedValue).Name);
                 ChickenQuantity.Text = "";
                 EggQuantity.Text = "";
                 DrinkOption.SelectedItem = NoDrink;
@@ -36,9 +37,9 @@ namespace Simple_Restaurant_Simulation
             {
                 Results.Text = error.Message;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Results.Text = "Sorry, something went wrong.";
+                Results.Text = "Sorry, something went wrong. " + ex.Message;
             }
         }
 
@@ -47,15 +48,16 @@ namespace Simple_Restaurant_Simulation
             try
             {
                 Results.Text = "";
+                server.OrdersTaken += cook.OnOrdersTaken;
                 server.SendOrder();
             }
             catch (InvalidOperationException error)
             {
                 Results.Text = error.Message;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Results.Text = "Sorry, something went wrong.";
+                Results.Text = "Sorry, something went wrong. " + ex.Message;
             }
         }
 
@@ -69,9 +71,9 @@ namespace Simple_Restaurant_Simulation
             {
                 Results.Text = error.Message;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Results.Text = "Sorry, something went wrong.";
+                Results.Text = "Sorry, something went wrong. " + ex.Message;
             }
         }
     }

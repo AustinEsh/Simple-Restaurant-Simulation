@@ -3,12 +3,6 @@ C:\Users\austi\source\repos\Simple Restaurant Simulation\Simple Restaurant Simul
 C:\Users\austi\source\repos\Simple Restaurant Simulation\Simple Restaurant Simulation\bin\x86\Debug\Simple Restaurant Simulation.xr.xml
 C:\Users\austi\source\repos\Simple Restaurant Simulation\Simple Restaurant Simulation\bin\x86\Debug\Simple Restaurant Simulation.exe
 C:\Users\austi\source\repos\Simple Restaurant Simulation\Simple Restaurant Simulation\bin\x86\Debug\Simple Restaurant Simulation.pdb
-C:\Users\austi\source\repos\Simple Restaurant Simulation\Simple Restaurant Simulation\bin\x86\Debug\resources.pri
-C:\Users\austi\source\repos\Simple Restaurant Simulation\Simple Restaurant Simulation\bin\x86\Debug\AppxManifest.xml
-C:\Users\austi\source\repos\Simple Restaurant Simulation\Simple Restaurant Simulation\bin\x86\Debug\Core\AppxManifest.xml
-C:\Users\austi\source\repos\Simple Restaurant Simulation\Simple Restaurant Simulation\bin\x86\Debug\Core\Simple Restaurant Simulation.exe
-C:\Users\austi\source\repos\Simple Restaurant Simulation\Simple Restaurant Simulation\bin\x86\Debug\Simple Restaurant Simulation.build.appxrecipe
-C:\Users\austi\source\repos\Simple Restaurant Simulation\Simple Restaurant Simulation\bin\x86\Debug\System.Runtime.dll
 C:\Users\austi\source\repos\Simple Restaurant Simulation\Simple Restaurant Simulation\bin\x86\Debug\Microsoft.UI.Xaml.Markup.winmd
 C:\Users\austi\source\repos\Simple Restaurant Simulation\Simple Restaurant Simulation\obj\x86\Debug\App.g.i.cs
 C:\Users\austi\source\repos\Simple Restaurant Simulation\Simple Restaurant Simulation\obj\x86\Debug\App.g.cs
@@ -24,6 +18,12 @@ C:\Users\austi\source\repos\Simple Restaurant Simulation\Simple Restaurant Simul
 C:\Users\austi\source\repos\Simple Restaurant Simulation\Simple Restaurant Simulation\obj\x86\Debug\Simple Restaurant Simulation.csproj.CopyComplete
 C:\Users\austi\source\repos\Simple Restaurant Simulation\Simple Restaurant Simulation\obj\x86\Debug\Simple Restaurant Simulation.exe
 C:\Users\austi\source\repos\Simple Restaurant Simulation\Simple Restaurant Simulation\obj\x86\Debug\Simple Restaurant Simulation.pdb
+C:\Users\austi\source\repos\Simple Restaurant Simulation\Simple Restaurant Simulation\bin\x86\Debug\resources.pri
+C:\Users\austi\source\repos\Simple Restaurant Simulation\Simple Restaurant Simulation\bin\x86\Debug\AppxManifest.xml
+C:\Users\austi\source\repos\Simple Restaurant Simulation\Simple Restaurant Simulation\bin\x86\Debug\Core\AppxManifest.xml
+C:\Users\austi\source\repos\Simple Restaurant Simulation\Simple Restaurant Simulation\bin\x86\Debug\Core\Simple Restaurant Simulation.exe
+C:\Users\austi\source\repos\Simple Restaurant Simulation\Simple Restaurant Simulation\bin\x86\Debug\Simple Restaurant Simulation.build.appxrecipe
+C:\Users\austi\source\repos\Simple Restaurant Simulation\Simple Restaurant Simulation\bin\x86\Debug\System.Runtime.dll
 C:\Users\austi\source\repos\Simple Restaurant Simulation\Simple Restaurant Simulation\obj\x86\Debug\ResourceHandlingTask.state
 C:\Users\austi\source\repos\Simple Restaurant Simulation\Simple Restaurant Simulation\obj\x86\Debug\priconfig.xml
 C:\Users\austi\source\repos\Simple Restaurant Simulation\Simple Restaurant Simulation\obj\x86\Debug\priconfig.xml.intermediate
@@ -42,4 +42,4 @@ C:\Users\austi\source\repos\Simple Restaurant Simulation\Simple Restaurant Simul
 C:\Users\austi\source\repos\Simple Restaurant Simulation\Simple Restaurant Simulation\obj\x86\Debug\MultipleQualifiersPerDimensionFound.txt
 C:\Users\austi\source\repos\Simple Restaurant Simulation\Simple Restaurant Simulation\obj\x86\Debug\ProjectArchitectures.txt
 C:\Users\austi\source\repos\Simple Restaurant Simulation\Simple Restaurant Simulation\obj\x86\Debug\.winmd_cache\$Microsoft.UI.Xaml.Markup.winmd_636885454160000000.json
-C:\Users\austi\source\repos\Simple Restaurant Simulation\Simple Restaurant Simulation\obj\x86\Debug\Simple Restaurant Simulation.csprojAssemblyReference.cache
+C:\Users\austi\source\repos\Simple Restaurant Simulation\Simple Restaurant Simulation\obj\x86\Debug\Simple Restaurant Simulation.csproj.AssemblyReference.cache

@@ -7,10 +7,10 @@ namespace Simple_Restaurant_Simulation
     public class Cook
     {
 
-        public void Process(TableRequests requests)
+        public void OnOrdersTaken(TableRequests requests)
         {
-            List<object> chickenItems = requests[new ChickenOrder(1)];
-            List<object> eggItems = requests[new EggOrder(1)];
+            List<object> chickenItems = requests[typeof(ChickenOrder)];
+            List<object> eggItems = requests[typeof(EggOrder)];
             foreach (ChickenOrder item in chickenItems)
             {
                 item.Obtain();

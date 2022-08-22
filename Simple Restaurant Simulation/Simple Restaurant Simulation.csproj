@@ -125,7 +125,6 @@
     <Compile Include="Drink.cs" />
     <Compile Include="EggOrder.cs" />
     <Compile Include="Cook.cs" />
-    <Compile Include="EggShell.cs" />
     <Compile Include="ItemInterface.cs" />
     <Compile Include="JockoFuel.cs" />
     <Compile Include="MainPage.xaml.cs">
