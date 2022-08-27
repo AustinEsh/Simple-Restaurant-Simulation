@@ -6,8 +6,9 @@ namespace Simple_Restaurant_Simulation
 {
     public class Cook
     {
-
-        public void OnOrdersTaken(TableRequests requests)
+        public delegate string OrdersPreparedEventHandler();
+        public event OrdersPreparedEventHandler OrdersPrepared;
+        public string OnOrdersTaken(TableRequests requests)
         {
             List<object> chickenItems = requests[typeof(ChickenOrder)];
             List<object> eggItems = requests[typeof(EggOrder)];
@@ -26,10 +27,8 @@ namespace Simple_Restaurant_Simulation
                 item.Crack();
                 item.Cook();
             }
-        }
-        public string Inspect(object eggOrder)
-        {
-            return ((EggOrder)eggOrder).Quality.ToString();
+
+            return OrdersPrepared();
         }
     }
 }

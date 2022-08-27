@@ -69,5 +69,7 @@ namespace Simple_Restaurant_Simulation
         {
             throw new NotImplementedException();
         }
+
+        public delegate void OrdersPreparedEventHandler();
     }
 }

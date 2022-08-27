@@ -48,8 +48,9 @@ namespace Simple_Restaurant_Simulation
             try
             {
                 Results.Text = "";
-                server.OrdersTaken += cook.OnOrdersTaken;
-                server.SendOrder();
+                server.OrdersTaken += () => { server.OnOrdersTaken(server._tableRequests); };
+                cook.OrdersPrepared += server.OnOrdersPrepared;
+                Results.Text = server.SendOrder();
             }
             catch (InvalidOperationException error)
             {
@@ -61,20 +62,21 @@ namespace Simple_Restaurant_Simulation
             }
         }
 
-        private void ServeFood_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                Results.Text = server.ServeFood();
-            }
-            catch (InvalidOperationException error)
-            {
-                Results.Text = error.Message;
-            }
-            catch (Exception ex)
-            {
-                Results.Text = "Sorry, something went wrong. " + ex.Message;
-            }
-        }
+        //private void ServeFood_Click(object sender, RoutedEventArgs e)
+        //{
+        //    try
+        //    {
+
+        //        Results.Text = server.ServeFood();
+        //    }
+        //    catch (InvalidOperationException error)
+        //    {
+        //        Results.Text = error.Message;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Results.Text = "Sorry, something went wrong. " + ex.Message;
+        //    }
+        //}
     }
 }

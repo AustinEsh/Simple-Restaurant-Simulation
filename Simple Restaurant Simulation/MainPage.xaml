@@ -23,9 +23,8 @@
         </ComboBox>
         <Button x:Name="ReceiveRequest" Content="Receive this request from:" Canvas.Left="138" Canvas.Top="275" Width="480" FontSize="30" Click="ReceiveRequest_Click"/>
         <Button x:Name="SendRequests" Content="Send all customer requests to the cook" Canvas.Left="138" Canvas.Top="375" Width="750" FontSize="30" Click="SendRequests_Click"/>
-        <Button Content="Serve prepared food to the customers" Canvas.Left="138" Canvas.Top="480" Width="750" FontSize="30" Click="ServeFood_Click"/>
-        <TextBlock Canvas.Left="125" Canvas.Top="555" Text="Results" TextWrapping="Wrap" FontSize="30"/>
-        <TextBlock x:Name="Results" Canvas.Left="108" Canvas.Top="614" TextWrapping="Wrap" FontSize="17" Height="346" Width="1250"/>
+        <TextBlock Canvas.Left="125" Canvas.Top="448" Text="Results" TextWrapping="Wrap" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <TextBlock x:Name="Results" Canvas.Left="108" Canvas.Top="507" TextWrapping="Wrap" FontSize="17" Height="346" Width="1250" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         <TextBox Height="54" Canvas.Left="625" Canvas.Top="275" Text="" TextWrapping="Wrap" Width="250" FontSize="30" x:Name="name"/>
     </Canvas>
 </Page>

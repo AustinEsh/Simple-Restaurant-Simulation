@@ -5,7 +5,7 @@ namespace Simple_Restaurant_Simulation
 {
     public class Server
     {
-        TableRequests _tableRequests;
+        public TableRequests _tableRequests;
         string[] _customers = new string[8];
         int _customerCount = 0;
 
@@ -43,28 +43,32 @@ namespace Simple_Restaurant_Simulation
             _tableRequests.Add(name, _drink);
             _customers[_customerCount] = name;
         }
-        public delegate void OrdersTakenEventHandler(TableRequests _tableRequests);
+        public delegate string OrdersTakenEventHandler(TableRequests _tableRequests);
         public event OrdersTakenEventHandler OrdersTaken;
-        public void SendOrder()
+        public string SendOrder()
         {
             if (_customers.Length > 0)
             {
-                OnOrdersTaken(_tableRequests);
+                return OnOrdersTaken(_tableRequests);
             }
             else
             {
                 throw new InvalidOperationException("There are no orders to send to the cook.");
             }
         }
-        protected virtual void OnOrdersTaken(TableRequests _tableRequests)
-        {
-            if (OrdersTaken != null)
-            {
-                OrdersTaken(_tableRequests);
-            }
-        }
+        //protected virtual string OnOrdersTaken(TableRequests _tableRequests)
+        //{
+        //    if (OrdersTaken != null)
+        //    {
+        //        return OrdersTaken(_tableRequests);
+        //    }
+        //    else
+        //    {
+        //        return "";
+        //    }
+        //}
 
-        public string ServeFood()
+        public string OnOrdersPrepared()
         {
             string summary = "";
 
